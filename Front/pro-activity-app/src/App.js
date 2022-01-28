@@ -1,39 +1,41 @@
 import './App.css';
 
 function App() {
-  const Activy = [
+  const [state, setstate] = useState(initialState)
+
+  const activities = [
     {
-      Id: 1,
-      Description: "Bem-Vindo! 1",
+      id: 1,
+      description: "Bem-Vindo! 1",
     },
     {
-      Id: 2,
-      Description: "Bem-Vindo! 2",
+      id: 2,
+      description: "Bem-Vindo! 2",
     },
   ];
+
   function newActivity(e){
     e.preventDefault();
-    
-    const activy = {
-      Id: document.getElementById('id').value,
-      Description: document.getElementById('description').value,
-    }
-    activy.push(activy);
+
+    const activity = {
+      id: document.getElementById('id').value,
+      description: document.getElementById('description').value,
+    };
+    activities.push(activity);
+    console.log(activity);
   }
 
   return (
     <>
       <form>       
-        <input id="id" type="text" placeholder='ID'/>
-        <input id="description" type="text" placeholder='Descrição'/>
+        <input id='id' type='text' placeholder='Id'/>
+        <input id='description' type='text' placeholder='Descrição'/>
         <button onClick={newActivity}>+ Atividade</button>
       </form>
       <hr/>
       <div className="mt-3">
           <ul className="list-group">
-            {Activy.map(act => (
-            <li key={act.Id} className="list-group-item">{act.Id} | {act.Description}</li>
-            ))}
+            {activities.map((act) => (<li key={act.id} className="list-group-item">{act.id} | {act.description}</li>))}
           </ul>
       </div>
     </>
