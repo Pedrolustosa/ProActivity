@@ -1,28 +1,27 @@
 import './App.css';
+import { useState } from 'react';
+
+let initialState = [
+  {
+    id: 1,
+    description: "Bem-Vindo! 1",
+  },
+  {
+    id: 2,
+    description: "Bem-Vindo! 2",
+  },
+];
 
 function App() {
-  const [state, setstate] = useState(initialState)
-
-  const activities = [
-    {
-      id: 1,
-      description: "Bem-Vindo! 1",
-    },
-    {
-      id: 2,
-      description: "Bem-Vindo! 2",
-    },
-  ];
+  const [activities, setActivities] = useState(initialState)
 
   function newActivity(e){
     e.preventDefault();
-
     const activity = {
       id: document.getElementById('id').value,
       description: document.getElementById('description').value,
     };
-    activities.push(activity);
-    console.log(activity);
+    setActivities([...activities, {...activity}]);
   }
 
   return (
