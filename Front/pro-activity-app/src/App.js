@@ -44,7 +44,7 @@ function App() {
 
       <div className='mt-3'>
           {activities.map((act) => (
-            <div key={act.id} className="card mb-2 shadow-sm">
+            <div key={act.id} className="card mb-2 shadow-lg">
             <div className="card-body">
               <div className='d-flex justify-content-between'>
                 <h5 className='card-title'>
@@ -62,6 +62,14 @@ function App() {
                 </h6>
               </div>
                 <p className='card-text'>{act.description}</p>
+                <div className='d-flex justify-content-end pt-2 m-0 border-top'>
+                  <button className='btn btn-sm btn-outline-primary me-2'>
+                    <i className='fas fa-pen me-2'></i>Editar
+                  </button>
+                  <button className='btn btn-sm btn-outline-danger'>
+                  <i className='fas fa-trash me-2'></i>Deletar
+                  </button>
+                </div>
               </div>
             </div>
           ))}
