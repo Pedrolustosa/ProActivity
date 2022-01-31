@@ -46,9 +46,20 @@ function App() {
           {activities.map((act) => (
             <div key={act.id} className="card mb-2 shadow-sm">
             <div className="card-body">
-              <p className="card-text">{act.id} | {act.description}</p>
+              <div className='d-flex justify-content-between'>
+                <h5 className='card-title'>
+                  <span className='badge rounded-pill bg-success me-1'>
+                    {act.id}
+                  </span>
+                    - Título
+                </h5>
+                <h6>
+                  Prioridade: Normal
+                  </h6>
+              </div>
+                <p className='card-text'>{act.description}</p>
+              </div>
             </div>
-          </div>
           ))}
       </div>
     </>
