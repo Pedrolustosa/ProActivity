@@ -43,7 +43,13 @@ function App() {
       <hr/>
 
       <div className='mt-3'>
-          {activities.map((act) => (<li key={act.id} className='list-group-item'>{act.id} | {act.description}</li>))}
+          {activities.map((act) => (
+            <div key={act.id} className="card mb-2 shadow-sm">
+            <div className="card-body">
+              <p className="card-text">{act.id} | {act.description}</p>
+            </div>
+          </div>
+          ))}
       </div>
     </>
   );
