@@ -6,14 +6,14 @@ let initialState = [
     id: 1,
     name: "Name 0",
     title: "Title 0",
-    priority: "Baixa",
+    priority: "1",
     description: "Description 0",
   },
   {
     id: 2,
     name: "Name 1",
     title: "Title 1",
-    priority: "Baixa",
+    priority: "1",
     description: "Description 1",
   },
 ];
@@ -31,6 +31,32 @@ function App() {
       description: document.getElementById('description').value,
     };
     setActivities([...activities, {...activity}]);
+  }
+
+  function priorityLabel(param){
+    switch(param){
+      case '1':
+        return 'Baixa';
+      case '2':
+        return 'Normal';
+      case '3':
+        return 'Alta';
+      default:
+        return 'Não Definido';
+    }
+  }
+
+  function priorityIcon(param){
+    switch(param){
+      case '1':
+        return 'smile';
+      case '2':
+        return 'meh';
+      case '3':
+        return 'frown';
+      default:
+        return 'Não Definido';
+    }
   }
 
   return (
@@ -82,8 +108,8 @@ function App() {
                   <h6>
                     Prioridade: 
                     <span className='ms-1 text-black'>
-                      <i className='me-1 far fa-frown'></i>
-                      {act.priority}
+                      <i className={'me-1 far fa-' + priorityIcon(act.priority)}></i>
+                     {priorityLabel(act.priority)}
                     </span>
                   </h6>
                 </div>
