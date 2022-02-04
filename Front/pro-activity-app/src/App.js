@@ -75,8 +75,10 @@ function App() {
 
   return (
     <>
-      
-      <ActivityForm/>
+
+      <ActivityForm
+        activities={activities}
+        newActivity={newActivity} />
       <hr />
 
       <div className='mt-3'>
