@@ -38,6 +38,11 @@ function App() {
     }
   }
 
+  function deleteActivity(id) {
+    const activityFilter = activities.filter(activity => activity.id !== id);
+    setActivities([...activityFilter]);
+  }
+
   function cleanFields() {
     const activity = {
       id: document.getElementById('id').value = '',
@@ -137,7 +142,7 @@ function App() {
                 <button className='btn btn-sm btn-outline-primary me-2'>
                   <i className='fas fa-pen me-2'></i>Editar
                 </button>
-                <button className='btn btn-sm btn-outline-danger'>
+                <button className='btn btn-sm btn-outline-danger' onClick={() => deleteActivity(act.id)}>
                   <i className='fas fa-trash me-2'></i>Deletar
                 </button>
               </div>
