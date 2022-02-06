@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import ActivityForm from './components/ActivityForm';
-import Activity from './components/Activity';
+import ActivitiesList from './components/ActivitiesList';
 
 let initialState = [
   {
@@ -48,21 +48,18 @@ function App() {
     };
   }
 
-
-
   return (
     <>
 
       <ActivityForm
         activities={activities}
-        newActivity={newActivity} />
+        newActivity={newActivity}
+      />
       <hr />
-
-      <div className='mt-3'>
-        {activities.map((act) => (
-          <Activity key={act.id} act={act} deleteActivity={deleteActivity} />
-        ))}
-      </div>
+      <ActivitiesList
+        activities={activities}
+        deleteActivity={deleteActivity}
+      />
     </>
   );
 }

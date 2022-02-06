@@ -1,7 +1,12 @@
 import React from 'react';
+import Activity from './Activity';
 
-export default function ActivitiesList() {
+export default function ActivitiesList(props) {
   return (
-  <div></div>
+    <div className='mt-3'>
+    {props.activities.map((act) => (
+      <Activity key={act.id} act={act} deleteActivity={props.deleteActivity} />
+    ))}
+  </div>
   )
 }
