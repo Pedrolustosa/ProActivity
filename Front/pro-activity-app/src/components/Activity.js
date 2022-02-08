@@ -51,7 +51,7 @@ export default function Activity(props) {
 
         <p className='card-text mt-1'>{props.act.description}</p>
             <div className='d-flex justify-content-end pt-2 m-0 border-top'>
-                <button className='btn btn-sm btn-outline-primary me-2'>
+                <button className='btn btn-sm btn-outline-primary me-2' onClick={() => props.editActivity(props.act.id)}>
                     <i className='fas fa-pen me-2'></i>Editar
                 </button>
                 <button className='btn btn-sm btn-outline-danger' onClick={() => props.deleteActivity(props.act.id)}>

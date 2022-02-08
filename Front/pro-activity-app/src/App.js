@@ -15,6 +15,17 @@ let initialState = [
 
 function App() {
   const [activities, setActivities] = useState(initialState)
+  const [activity, setActivitie] = useState({})
+
+  function cleanFields() {
+    const activity = {
+      id: document.getElementById('id').value = '',
+      name: document.getElementById('name').value = '',
+      title: document.getElementById('title').value = '',
+      priority: document.getElementById('priority').value = '',
+      description: document.getElementById('description').value = '',
+    };
+  }
 
   function newActivity(e) {
     e.preventDefault();
@@ -37,16 +48,12 @@ function App() {
     const activityFilter = activities.filter(activity => activity.id !== id);
     setActivities([...activityFilter]);
   }
-
-  function cleanFields() {
-    const activity = {
-      id: document.getElementById('id').value = '',
-      name: document.getElementById('name').value = '',
-      title: document.getElementById('title').value = '',
-      priority: document.getElementById('priority').value = '',
-      description: document.getElementById('description').value = '',
-    };
+  function editActivity(id) {
+    const activity = activities.filter(activity => activity.id === id);
+    setActivitie(activity[0])
   }
+
+  
 
   return (
     <>
@@ -54,11 +61,13 @@ function App() {
       <ActivityForm
         activities={activities}
         newActivity={newActivity}
+        ativSelected={activity}
       />
       <hr />
       <ActivitiesList
         activities={activities}
         deleteActivity={deleteActivity}
+        editActivity={editActivity}
       />
     </>
   );
