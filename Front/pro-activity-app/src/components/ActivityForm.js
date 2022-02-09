@@ -1,13 +1,21 @@
 import React from 'react';
+import { useState } from 'react';
 
 export default function ActivityForm(props) {
-  return (
+    const [activity, setActivity] = useState({})
+    const inputTextHandler = (e) => {
+        const {name, value} = e.target;
+        setActivity({...activity, [name]: value})
+    }
+
+    // {Math.max.apply(Math, props.activities.map(item => item.id)) + 1}
+
+    return (
         <form className='row g-3 mt-3 mb-2 pt-1 pb-3'>
             <div className="col-md-1">
                 <label className='form-label'>Id</label>
-                <input id='id' type='number' placeholder='Id' min='0' className='form-control'
-                    readOnly disabled
-                    value={Math.max.apply(Math, props.activities.map(item => item.id)) + 1} />
+                <input id='id' name='id' onChange={inputTextHandler} type='number' placeholder='Id' min='0' className='form-control'
+                    disabled value={activity.id} />
             </div>
             <div className='col-md-2'>
                 <label className='form-label'>Prioridade</label>
@@ -34,5 +42,5 @@ export default function ActivityForm(props) {
                 <button className='btn btn-outline-primary' onClick={props.newActivity}>+ Atividade</button>
             </div>
         </form>
-  )
+    )
 }
