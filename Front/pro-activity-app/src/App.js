@@ -18,19 +18,17 @@ function App() {
   const [activity, setActivitie] = useState({})
 
   function cleanFields() {
-    const activity = {
-      id: document.getElementById('id').value = '',
-      name: document.getElementById('name').value = '',
-      title: document.getElementById('title').value = '',
-      priority: document.getElementById('priority').value = '',
-      description: document.getElementById('description').value = '',
-    };
+      document.getElementById('id').value = '';
+      document.getElementById('name').value = '';
+      document.getElementById('title').value = '';
+      document.getElementById('priority').value = '';
+      document.getElementById('description').value = '';
   }
 
   function newActivity(e) {
     e.preventDefault();
     const activity = {
-      id: document.getElementById('id').value,
+      id: Math.max.apply(Math, activities.map(item => item.id)) + 1,
       name: document.getElementById('name').value,
       title: document.getElementById('title').value,
       priority: document.getElementById('priority').value,

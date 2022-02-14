@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 
 export default function ActivityForm(props) {
     const [activity, setActivity] = useState({})
+
+    useEffect(() =>{
+        console.log('UseEffect it Works')
+    }, []);
+
     const inputTextHandler = (e) => {
         const {name, value} = e.target;
         setActivity({...activity, [name]: value})
-    }
-
-    // {Math.max.apply(Math, props.activities.map(item => item.id)) + 1}
+    };
 
     return (
         <form className='row g-3 mt-3 mb-2 pt-1 pb-3'>
-            <div className="col-md-1">
-                <label className='form-label'>Id</label>
-                <input id='id' name='id' onChange={inputTextHandler} type='number' placeholder='Id' min='0' className='form-control'
-                    disabled value={activity.id} />
-            </div>
             <div className='col-md-2'>
                 <label className='form-label'>Prioridade</label>
                 <select id='priority' className='form-select'>
@@ -36,7 +34,7 @@ export default function ActivityForm(props) {
             </div>
             <div className='col-md-4'>
                 <label className='form-label'>Descrição</label>
-                <input id='description' type='text' placeholder='Descrição' className='form-control' />
+                <textarea id='description' type='text' placeholder='Descrição' className='form-control' />
             </div>
             <div className='col-12'>
                 <button className='btn btn-outline-primary' onClick={props.newActivity}>+ Atividade</button>
