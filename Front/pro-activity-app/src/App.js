@@ -41,6 +41,15 @@ function App() {
     }
   };
 
+  function cancelActivity(){
+    setActivity({id: 0});
+  }
+
+  function updateActivity(act){
+    setActivities(act.map(item => item.id === act.id ? act : item));
+    setActivity({id: 0});
+  }
+
   function deleteActivity(id) {
     const activityFilter = activities.filter((activity) => activity.id !== id);
     setActivities([...activityFilter]);
@@ -56,8 +65,10 @@ function App() {
     <>
       <ActivityForm
         activities={activities}
-        newActivity={newActivity}
         activSelected={activity}
+        newActivity={newActivity}
+        updateActivity={updateActivity}
+        cancelActivity={cancelActivity}
       />
       <hr />
       <ActivitiesList
