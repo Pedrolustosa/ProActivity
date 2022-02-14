@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ActivityForm from './components/ActivityForm';
 import ActivitiesList from './components/ActivitiesList';
 
@@ -14,8 +14,13 @@ let initialState = [
 ];
 
 function App() {
+  const [index, setIndex] = useState(0);
   const [activities, setActivities] = useState(initialState);
   const [activity, setActivity] = useState({id: 0});
+
+  useEffect(() => {
+    activities.length <= 0 ? setIndex(1) : setIndex(Math.max.apply(Math, activities.map(item => item.id)) + 1,)
+  }, [activities])
 
   function cleanFields() {
       document.getElementById('name').value = '';
@@ -24,19 +29,12 @@ function App() {
       document.getElementById('description').value = '';
   };
 
-  function newActivity(e) {
-    e.preventDefault();
-    const activity = {
-      id: Math.max.apply(Math, activities.map(item => item.id)) + 1,
-      name: document.getElementById('name').value,
-      title: document.getElementById('title').value,
-      priority: document.getElementById('priority').value,
-      description: document.getElementById('description').value,
-    };
-    if (activity.name === '') {
+  function newActivity(act) {
+
+    if (act.name === '') {
       alert('Os Campos são obrigatórios');
     } else {
-      setActivities([...activities, { ...activity }]);
+      setActivities([...activities, { ...act, id: index}]);
       cleanFields();
     }
   };
@@ -46,7 +44,7 @@ function App() {
   }
 
   function updateActivity(act){
-    setActivities(act.map(item => item.id === act.id ? act : item));
+    setActivities(activities.map(item => item.id === act.id ? act : item));
     setActivity({id: 0});
   }
 
