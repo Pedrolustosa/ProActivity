@@ -75,7 +75,8 @@ export default function ActivityForm(props) {
                 <label className='form-label'>Descrição</label>
                 <textarea id='description' name='description' type='text' rows={1} value={activity.description} onChange={inputTextHandler} placeholder='Descrição' className='form-control' />
             </div>
-            <div className='col-12 mt-3'>
+            <hr/>
+            <div className='col-12 mt-0'>
             {activity.id === 0 ? (
                         <button
                             className='btn btn-outline-secondary'

@@ -3,19 +3,9 @@ import { useState, useEffect } from 'react';
 import ActivityForm from './components/ActivityForm';
 import ActivitiesList from './components/ActivitiesList';
 
-let initialState = [
-  {
-    id: 1,
-    name: "Name 0",
-    title: "Title 0",
-    priority: "1",
-    description: "Description 0",
-  },
-];
-
 function App() {
   const [index, setIndex] = useState(0);
-  const [activities, setActivities] = useState(initialState);
+  const [activities, setActivities] = useState([]);
   const [activity, setActivity] = useState({id: 0});
 
   useEffect(() => {

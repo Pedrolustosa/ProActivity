@@ -35,7 +35,7 @@ export default function Activity(props) {
                     <span className={'badge rounded-pill me-1 bg-' + priorityStyle(props.act.priority)}>
                         {props.act.id}
                     </span>
-                    - Título
+                    - {props.act.title}
                 </h5>
                 <h6>
                     Prioridade:
