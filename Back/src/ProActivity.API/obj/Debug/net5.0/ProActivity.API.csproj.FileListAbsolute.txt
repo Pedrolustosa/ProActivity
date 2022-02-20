@@ -1,3 +1,10 @@
+C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.csproj.AssemblyReference.cache
+C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.AssemblyInfoInputs.cache
+C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.AssemblyInfo.cs
+C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.csproj.CoreCompileInputs.cache
+C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Developer\ProActivity\Back\src\ProActivity.API\bin\Debug\net5.0\appsettings.Development.json
 C:\Developer\ProActivity\Back\src\ProActivity.API\bin\Debug\net5.0\appsettings.json
 C:\Developer\ProActivity\Back\src\ProActivity.API\bin\Debug\net5.0\ProActivity.API.exe
@@ -11,13 +18,6 @@ C:\Developer\ProActivity\Back\src\ProActivity.API\bin\Debug\net5.0\Microsoft.Ope
 C:\Developer\ProActivity\Back\src\ProActivity.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Developer\ProActivity\Back\src\ProActivity.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Developer\ProActivity\Back\src\ProActivity.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.csproj.AssemblyReference.cache
-C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.GeneratedMSBuildEditorConfig.editorconfig
-C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.AssemblyInfoInputs.cache
-C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.AssemblyInfo.cs
-C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.csproj.CoreCompileInputs.cache
-C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.MvcApplicationPartsAssemblyInfo.cs
-C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\ProActivity.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\staticwebassets\ProActivity.API.StaticWebAssets.Manifest.cache
 C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\staticwebassets\ProActivity.API.StaticWebAssets.xml
 C:\Developer\ProActivity\Back\src\ProActivity.API\obj\Debug\net5.0\scopedcss\bundle\ProActivity.API.styles.css

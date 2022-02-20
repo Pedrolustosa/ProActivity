@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProActivity.API.Models;
 
 namespace ProActivity.API.Controllers
 {
@@ -7,25 +8,31 @@ namespace ProActivity.API.Controllers
     public class ActivityController : ControllerBase
     {
         [HttpGet]
-        public string Get()
+        public Activity Get()
         {
-            return "Primeiro Metódo GET";
+            return new Activity();
+        }
+
+        [HttpGet("{id}")]
+        public string GetById(int id)
+        {
+            return $"Primeiro Metódo GET {id}";
         }
 
         [HttpPost]
-        public string Post()
+        public Activity Post(Activity activity)
         {
-            return "Primeiro Metódo POST";
+            return activity;
         }
 
-        [HttpPut]
-        public string Put()
+        [HttpPut("{id}")]
+        public Activity Put(int id, Activity activity)
         {
-            return "Primeiro Metódo PUT";
+            return activity;
         }
 
-        [HttpDelete]
-        public string Delete()
+        [HttpDelete("{id}")]
+        public string Delete(int id)
         {
             return "Primeiro Metódo DELETE";
         }
