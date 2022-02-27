@@ -8,10 +8,7 @@ namespace ProActivity.API.Models
         public string Description { get; set; }
         public string Priority { get; set; }
 
-        public Activity()
-        {
-
-        }
+        public Activity() { }
 
         public Activity(int id)
         {
