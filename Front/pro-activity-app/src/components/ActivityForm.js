@@ -34,8 +34,7 @@ export default function ActivityForm(props) {
         setActivity(activityBegin );
     };
 
-    const updateActivity = () => {
-    };
+    const updateActivity = () => {};
 
     const inputTextHandler = (e) => {
         const {name, value} = e.target;
@@ -57,10 +56,10 @@ export default function ActivityForm(props) {
             <div className='col-md-2'>
                 <label className='form-label'>Prioridade</label>
                 <select id='priority' name='priority' value={activity.priority} onChange={inputTextHandler} className='form-select' placeholder='Escolha a Prioridade'>
-                    <option defaultValue='0'>Selecionar...</option>
-                    <option value='1'>Baixa</option>
-                    <option value='2'>Normal</option>
-                    <option value='3'>Alta</option>
+                    <option value='Undefined'>Selecionar...</option>
+                    <option value='Low'>Baixa</option>
+                    <option value='Mid'>Normal</option>
+                    <option value='High'>Alta</option>
                 </select>
             </div>
             <div className='col-md-2'>

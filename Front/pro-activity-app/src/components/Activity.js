@@ -3,24 +3,22 @@ import React from 'react';
 export default function Activity(props) {
     function priorityLabel(param) {
         switch (param) {
-          case '1':
-            return 'Baixa';
-          case '2':
-            return 'Normal';
-          case '3':
-            return 'Alta';
+          case 'Low':
+          case 'Mid':
+          case 'High':
+            return param;
           default:
-            return 'Não Definido';
+            return 'Undefined';
         }
       }
     
       function priorityStyle(param, icon) {
         switch (param) {
-          case '1':
+          case 'Low':
             return icon ? 'smile' : 'success';
-          case '2':
+          case 'Mid':
             return icon ? 'meh' : 'warning';
-          case '3':
+          case 'High':
             return icon ? 'frown' : 'danger';
           default:
             return 'Não Definido';
