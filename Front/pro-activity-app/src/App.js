@@ -48,9 +48,12 @@ function App() {
     setActivity({id: 0});
   }
 
-  function deleteActivity(id) {
-    const activityFilter = activities.filter((activity) => activity.id !== id);
-    setActivities([...activityFilter]);
+  const deleteActivity = async (id) =>  {
+    if(await api.delete(`activity/${id}`))
+    {
+      const activityFilter = activities.filter((activity) => activity.id !== id);
+      setActivities([...activityFilter]);
+    }
   };
 
   function editActivity(id) {
