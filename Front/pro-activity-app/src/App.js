@@ -9,18 +9,18 @@ function App() {
   const [activities, setActivities] = useState([]);
   const [activity, setActivity] = useState({id: 0});
 
-  const takeAllActivies = () => {
-    const response = api.get('actitivity');
+  const takeAllActivies = async () => {
+    const response = await api.get('activity');
     return response.data;
   };
 
   useEffect(() => {
-    const getActivity = () => {
-      const allActivities = takeAllActivies();
+    const getActivity = async () => {
+      const allActivities = await takeAllActivies();
       if(allActivities) setActivities(allActivities);
     };
     getActivity();
-  }, [activities])
+  }, [])
 
   function cleanFields() {
       document.getElementById('name').value = '';
