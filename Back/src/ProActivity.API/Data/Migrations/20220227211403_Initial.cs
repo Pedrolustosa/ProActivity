@@ -15,7 +15,7 @@ namespace ProActivity.API.Data.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     Title = table.Column<string>(type: "TEXT", nullable: true),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
-                    Priority = table.Column<string>(type: "TEXT", nullable: true)
+                    Priority = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
