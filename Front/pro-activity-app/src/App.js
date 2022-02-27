@@ -5,7 +5,6 @@ import ActivitiesList from './components/ActivitiesList';
 import api from './api/atividade';
 
 function App() {
-  const [index] = useState(0);
   const [activities, setActivities] = useState([]);
   const [activity, setActivity] = useState({id: 0});
 
@@ -29,12 +28,13 @@ function App() {
       document.getElementById('description').value = '';
   };
 
-  function newActivity(act) {
-
+  const newActivity = async (act) => {
+    const response = await api.post('activity', act);
     if (act.name === '') {
-      alert('Os Campos são obrigatórios');
+      alert(`Os Campos são obrigatórios`);
+      document.getElementById('name').style.borderColor = "red";
     } else {
-      setActivities([...activities, { ...act, id: index}]);
+      setActivities([...activities, response.data]);
       cleanFields();
     }
   };
