@@ -31,19 +31,19 @@ namespace ProActivity.API.Controllers
         }
 
         [HttpPost]
-        public IEnumerable<Activity> Post(Activity activity)
+        public Activity Post(Activity activity)
         {
             _context.Activities.Add(activity);
             if (_context.SaveChanges() > 0)
-                return _context.Activities;
+                return _context.Activities.FirstOrDefault(act => act.Id == activity.Id);
             else
-                throw new Exception("VocÊ não coseguiu adicionar uma atividade");
+                throw new Exception("Você não coseguiu adicionar uma atividade");
         }
 
         [HttpPut("{id}")]
         public Activity Put(int id, Activity activity)
         {
-            if (activity.Id != id) throw new Exception("Você está tentando atuaizar a atividade errada!");
+            if (activity.Id != id) throw new Exception("Você está tentando atualizar a atividade errada!");
 
             _context.Update(activity);
             if (_context.SaveChanges() > 0)
