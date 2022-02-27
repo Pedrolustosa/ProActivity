@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "s8sMmUbJqYAC3SoihaaSks6YrlTb++ndq47xNUhWBtuW1pqL1afk0gccy/w86yCBpD1fZWDKOkSsPyNHcq6l2A==",
+  "dgSpecHash": "cAuN7Eefq3XJX4AxjL0dwbs85YJrFcc6RSg0kH2DjoaOV/p4p8SeOphqFBYGJH3+qySwwDoZnkhPFzG7goAucA==",
   "success": true,
-  "projectFilePath": "c:\\Developer\\ProActivity\\Back\\src\\ProActivity.API\\ProActivity.API.csproj",
+  "projectFilePath": "C:\\Developer\\ProActivity\\Back\\src\\ProActivity.API\\ProActivity.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
