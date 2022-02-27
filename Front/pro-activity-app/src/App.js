@@ -2,14 +2,24 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import ActivityForm from './components/ActivityForm';
 import ActivitiesList from './components/ActivitiesList';
+import api from './api/atividade';
 
 function App() {
-  const [index, setIndex] = useState(0);
+  const [index] = useState(0);
   const [activities, setActivities] = useState([]);
   const [activity, setActivity] = useState({id: 0});
 
+  const takeAllActivies = () => {
+    const response = api.get('actitivity');
+    return response.data;
+  };
+
   useEffect(() => {
-    activities.length <= 0 ? setIndex(1) : setIndex(Math.max.apply(Math, activities.map(item => item.id)) + 1,)
+    const getActivity = () => {
+      const allActivities = takeAllActivies();
+      if(allActivities) setActivities(allActivities);
+    };
+    getActivity();
   }, [activities])
 
   function cleanFields() {
