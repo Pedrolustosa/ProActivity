@@ -63,11 +63,7 @@ function App() {
   function editActivity(id) {
     const activity = activities.filter((activity) => activity.id === id);
     setActivity(activity[0]);
-<<<<<<< HEAD
     handleActivityModal();
-=======
-    console.log(activity);
->>>>>>> parent of 962f68e (Updating Activity)
   };
 
   return (
