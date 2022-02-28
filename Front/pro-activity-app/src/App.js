@@ -6,12 +6,11 @@ import ActivityForm from './components/ActivityForm';
 import ActivitiesList from './components/ActivitiesList';
 
 function App() {
-  const [show, setShow] = useState(false);
+  const [showActivityModal, setShowActivityModal] = useState(false);
   const [activities, setActivities] = useState([]);
   const [activity, setActivity] = useState({id: 0});
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleActivityModal = () => setShowActivityModal(!showActivityModal);
 
   const takeAllActivies = async () => {
     const response = await api.get('activity');
@@ -66,6 +65,7 @@ function App() {
   function editActivity(id) {
     const activity = activities.filter((activity) => activity.id === id);
     setActivity(activity[0]);
+    handleActivityModal();
   };
 
   return (
@@ -73,7 +73,7 @@ function App() {
         <div className='d-flex justify-content-between align-items-end mt-2 mb-3 pb-2 border-bottom border-1'>
           <h1 className='m-0 p-0'>Atividade {activity.id !== 0 ? activity.id : ''}</h1>
 
-          <Button variant="outline-secondary" onClick={handleShow}>
+          <Button variant="outline-secondary" onClick={handleActivityModal}>
             <i className='fas fa-plus'></i>
           </Button>
         </div>
@@ -84,7 +84,7 @@ function App() {
           editActivity={editActivity}
         />
 
-        <Modal show={show} size="lg" onHide={handleClose} centered>
+        <Modal show={showActivityModal} size="lg" onHide={handleActivityModal} centered>
           <Modal.Header closeButton>
             <Modal.Title>Atividade {activity.id !== 0 ? activity.id : ''}</Modal.Title>
           </Modal.Header>
