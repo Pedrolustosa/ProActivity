@@ -45,14 +45,12 @@ function App() {
 
   function cancelActivity(){
     setActivity({id: 0});
-  };
+  }
 
-  const updateActivity = async (act) => {
-    const response = await api.put(`activity/${act.id}`, act);
-    const { id } = response.data;
-    setActivities(activities.map((item) => (item.id === id ? response.data : item)));
+  function updateActivity(act){
+    setActivities(activities.map(item => item.id === act.id ? act : item));
     setActivity({id: 0});
-  };
+  }
 
   const deleteActivity = async (id) =>  {
     if(await api.delete(`activity/${id}`))
@@ -65,7 +63,11 @@ function App() {
   function editActivity(id) {
     const activity = activities.filter((activity) => activity.id === id);
     setActivity(activity[0]);
+<<<<<<< HEAD
     handleActivityModal();
+=======
+    console.log(activity);
+>>>>>>> parent of 962f68e (Updating Activity)
   };
 
   return (
