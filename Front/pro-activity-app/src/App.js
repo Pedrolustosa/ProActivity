@@ -1,12 +1,17 @@
 import './App.css';
+import api from './api/atividade';
 import { useState, useEffect } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import ActivityForm from './components/ActivityForm';
 import ActivitiesList from './components/ActivitiesList';
-import api from './api/atividade';
 
 function App() {
+  const [show, setShow] = useState(false);
   const [activities, setActivities] = useState([]);
   const [activity, setActivity] = useState({id: 0});
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const takeAllActivies = async () => {
     const response = await api.get('activity');
@@ -72,12 +77,33 @@ function App() {
         updateActivity={updateActivity}
         cancelActivity={cancelActivity}
       />
+
       <hr />
+
       <ActivitiesList
         activities={activities}
         deleteActivity={deleteActivity}
         editActivity={editActivity}
       />
+
+      <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
