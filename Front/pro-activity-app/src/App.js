@@ -70,40 +70,34 @@ function App() {
 
   return (
     <>
-      <ActivityForm
-        activities={activities}
-        activSelected={activity}
-        newActivity={newActivity}
-        updateActivity={updateActivity}
-        cancelActivity={cancelActivity}
-      />
+        <div className='d-flex justify-content-between align-items-end mt-2 mb-3 pb-2 border-bottom border-1'>
+          <h1 className='m-0 p-0'>Atividade {activity.id !== 0 ? activity.id : ''}</h1>
 
-      <hr />
-
-      <ActivitiesList
-        activities={activities}
-        deleteActivity={deleteActivity}
-        editActivity={editActivity}
-      />
-
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+          <Button variant="outline-secondary" onClick={handleShow}>
+            <i className='fas fa-plus'></i>
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        </div>
+
+        <ActivitiesList
+          activities={activities}
+          deleteActivity={deleteActivity}
+          editActivity={editActivity}
+        />
+
+        <Modal show={show} size="lg" onHide={handleClose} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Atividade {activity.id !== 0 ? activity.id : ''}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <ActivityForm
+              activities={activities}
+              activSelected={activity}
+              newActivity={newActivity}
+              updateActivity={updateActivity}
+              cancelActivity={cancelActivity}
+            />
+          </Modal.Body>
+        </Modal>
     </>
   );
 }

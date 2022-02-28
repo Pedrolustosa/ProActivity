@@ -34,8 +34,6 @@ export default function ActivityForm(props) {
         setActivity(activityBegin );
     };
 
-    const updateActivity = () => {};
-
     const inputTextHandler = (e) => {
         const {name, value} = e.target;
         setActivity({...activity, [name]: value});
@@ -51,28 +49,29 @@ export default function ActivityForm(props) {
 
     return (
         <>
-        <h1>Atividade {activity.id !== 0 ? activity.id : ''}</h1>
-        <form className='row g-3 mt-3 mb-2 pt-1 pb-3' onSubmit={handleSubmit}>
-            <div className='col-md-2'>
-                <label className='form-label'>Prioridade</label>
-                <select id='priority' name='priority' value={activity.priority} onChange={inputTextHandler} className='form-select' placeholder='Escolha a Prioridade'>
-                    <option value='Undefined'>Selecionar...</option>
-                    <option value='Low'>Baixa</option>
-                    <option value='Mid'>Normal</option>
-                    <option value='High'>Alta</option>
-                </select>
+        <form className='mt-3 mb-2 pt-1 pb-3' onSubmit={handleSubmit}>
+            <div className='row g-3'>
+                <div className='col-md-4'>
+                    <label className='form-label fw-bold'>Prioridade</label>
+                    <select id='priority' name='priority' value={activity.priority} onChange={inputTextHandler} className='form-select' placeholder='Escolha a Prioridade'>
+                        <option value='Undefined'>Selecionar...</option>
+                        <option value='Low'>Baixa</option>
+                        <option value='Mid'>Normal</option>
+                        <option value='High'>Alta</option>
+                    </select>
+                </div>
+                <div className='col-md-4'>
+                    <label className='form-label fw-bold'>Nome</label>
+                    <input id='name' name='name' type='text' value={activity.name} onChange={inputTextHandler} placeholder='Nome' className='form-control' />
+                </div>
+                <div className='col-md-4'>
+                    <label className='form-label fw-bold'>Título</label>
+                    <input id='title' name='title' type='text' value={activity.title} onChange={inputTextHandler} placeholder='Título' className='form-control' />
+                </div>
             </div>
-            <div className='col-md-2'>
-                <label className='form-label'>Nome</label>
-                <input id='name' name='name' type='text' value={activity.name} onChange={inputTextHandler} placeholder='Nome' className='form-control' />
-            </div>
-            <div className='col-md-4'>
-                <label className='form-label'>Título</label>
-                <input id='title' name='title' type='text' value={activity.title} onChange={inputTextHandler} placeholder='Título' className='form-control' />
-            </div>
-            <div className='col-md-4'>
-                <label className='form-label'>Descrição</label>
-                <textarea id='description' name='description' type='text' rows={1} value={activity.description} onChange={inputTextHandler} placeholder='Descrição' className='form-control' />
+            <div className='col-md-12'>
+                <label className='form-label fw-bold'>Descrição</label>
+                <textarea id='description' name='description' type='text' rows={5} value={activity.description} onChange={inputTextHandler} placeholder='Descrição' className='form-control' />
             </div>
             <hr/>
             <div className='col-12 mt-0'>
