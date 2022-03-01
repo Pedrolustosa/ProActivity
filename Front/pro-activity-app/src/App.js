@@ -33,6 +33,7 @@ function App() {
   };
 
   const newActivity = async (act) => {
+    handleActivityModal();
     const response = await api.post('activity', act);
     if (act.name === '') {
       alert(`Os Campos são obrigatórios`);
@@ -48,6 +49,7 @@ function App() {
   }
 
   function updateActivity(act){
+    handleActivityModal();
     setActivities(activities.map(item => item.id === act.id ? act : item));
     setActivity({id: 0});
   }
