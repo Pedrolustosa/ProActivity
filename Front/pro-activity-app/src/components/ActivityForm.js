@@ -29,7 +29,7 @@ export default function ActivityForm(props) {
         if(props.activSelected.id !== 0 )
             props.updateActivity(activity);
         else
-            props.newActivity(activity);
+            props.addActivity(activity);
 
         setActivity(activityBegin );
     };

@@ -17,6 +17,11 @@ function App() {
     return response.data;
   };
 
+  const newActivity = () => {
+    setActivity({id: 0});
+    handleActivityModal();
+  }
+
   useEffect(() => {
     const getActivity = async () => {
       const allActivities = await takeAllActivies();
@@ -32,7 +37,7 @@ function App() {
       document.getElementById('description').value = '';
   };
 
-  const newActivity = async (act) => {
+  const addActivity = async (act) => {
     handleActivityModal();
     const response = await api.post('activity', act);
     if (act.name === '') {
@@ -44,11 +49,12 @@ function App() {
     }
   };
 
-  function cancelActivity(){
+  const cancelActivity = () => {
     setActivity({id: 0});
+    handleActivityModal();
   }
 
-  function updateActivity(act){
+  const updateActivity = (act) => {
     handleActivityModal();
     setActivities(activities.map(item => item.id === act.id ? act : item));
     setActivity({id: 0});
@@ -74,7 +80,7 @@ function App() {
         <div className='d-flex justify-content-between align-items-end mt-2 mb-3 pb-2 border-bottom border-1'>
           <h1 className='m-0 p-0'>Atividade {activity.id !== 0 ? activity.id : ''}</h1>
 
-          <Button variant="outline-secondary" onClick={handleActivityModal}>
+          <Button variant="outline-secondary" onClick={newActivity}>
             <i className='fas fa-plus'></i>
           </Button>
         </div>
@@ -93,7 +99,7 @@ function App() {
             <ActivityForm
               activities={activities}
               activSelected={activity}
-              newActivity={newActivity}
+              addActivity={addActivity}
               updateActivity={updateActivity}
               cancelActivity={cancelActivity}
             />
