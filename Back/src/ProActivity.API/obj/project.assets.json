@@ -476,6 +476,31 @@
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
         }
+      },
+      "ProActivity.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.10",
+          "Microsoft.EntityFrameworkCore.Sqlite": "5.0.10",
+          "ProActivity.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ProActivity.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProActivity.Data.dll": {}
+        }
+      },
+      "ProActivity.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/ProActivity.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProActivity.Domain.dll": {}
+        }
       }
     }
   },
@@ -1281,6 +1306,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "ProActivity.Data/1.0.0": {
+      "type": "project",
+      "path": "../ProActivity.Data/ProActivity.Data.csproj",
+      "msbuildProject": "../ProActivity.Data/ProActivity.Data.csproj"
+    },
+    "ProActivity.Domain/1.0.0": {
+      "type": "project",
+      "path": "../ProActivity.Domain/ProActivity.Domain.csproj",
+      "msbuildProject": "../ProActivity.Domain/ProActivity.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1289,6 +1324,8 @@
       "Microsoft.EntityFrameworkCore.Design >= 5.0.10",
       "Microsoft.EntityFrameworkCore.Sqlite >= 5.0.10",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.10",
+      "ProActivity.Data >= 1.0.0",
+      "ProActivity.Domain >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -1316,7 +1353,14 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Developer\\ProActivity\\Back\\src\\ProActivity.Data\\ProActivity.Data.csproj": {
+              "projectPath": "C:\\Developer\\ProActivity\\Back\\src\\ProActivity.Data\\ProActivity.Data.csproj"
+            },
+            "C:\\Developer\\ProActivity\\Back\\src\\ProActivity.Domain\\ProActivity.Domain.csproj": {
+              "projectPath": "C:\\Developer\\ProActivity\\Back\\src\\ProActivity.Domain\\ProActivity.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

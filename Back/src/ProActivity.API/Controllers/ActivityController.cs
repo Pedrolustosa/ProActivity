@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using ProActivity.API.Models;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using ProActivity.Data.Context;
 using System.Collections.Generic;
-using ProActivity.API.Data;
-using System;
+using ProActivity.Domain.Entities;
 
 namespace ProActivity.API.Controllers
 {
