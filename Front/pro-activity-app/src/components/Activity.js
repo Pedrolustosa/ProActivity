@@ -52,7 +52,7 @@ export default function Activity(props) {
                 <button className='btn btn-sm btn-outline-primary me-2' onClick={() => props.editActivity(props.act.id)}>
                     <i className='fas fa-pen me-2'></i>Editar
                 </button>
-                <button className='btn btn-sm btn-outline-danger' onClick={() => props.deleteActivity(props.act.id)}>
+                <button className='btn btn-sm btn-outline-danger' onClick={() => props.handleConfirmModal()}>
                     <i className='fas fa-trash me-2'></i>Deletar
                 </button>
             </div>

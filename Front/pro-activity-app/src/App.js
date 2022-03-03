@@ -7,10 +7,13 @@ import ActivitiesList from './components/ActivitiesList';
 
 function App() {
   const [showActivityModal, setShowActivityModal] = useState(false);
+  const [smShowConfirmModal, setSmShowConfirmModal] = useState(false);
+
   const [activities, setActivities] = useState([]);
   const [activity, setActivity] = useState({id: 0});
 
   const handleActivityModal = () => setShowActivityModal(!showActivityModal);
+  const handleConfirmModal = () => setSmShowConfirmModal(!smShowConfirmModal);
 
   const takeAllActivies = async () => {
     const response = await api.get('activity');
@@ -87,8 +90,8 @@ function App() {
 
         <ActivitiesList
           activities={activities}
-          deleteActivity={deleteActivity}
           editActivity={editActivity}
+          handleConfirmModal={handleConfirmModal}
         />
 
         <Modal show={showActivityModal} size="lg" onHide={handleActivityModal} centered>
@@ -104,6 +107,25 @@ function App() {
               cancelActivity={cancelActivity}
             />
           </Modal.Body>
+        </Modal>
+
+        <Modal size='sm' show={smShowConfirmModal} onHide={handleConfirmModal} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Excluindo Atividade{' '} {activity.id !== 0 ? activity.id : ''}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Tem certeza excluir essa atividade {activity.id} ?
+          </Modal.Body>
+          <Modal.Footer className='d-flex justify-content-between'>
+            <button className='btn btn-outline-success' onClick={() => deleteActivity(activity.id)}>
+              <i className='fas fa-check me-2'></i>
+              sim
+            </button>
+            <button className='btn btn-danger' onClick={() => handleConfirmModal}>
+            <i className='fas fa-times me-2'></i>
+              Não
+            </button>
+          </Modal.Footer>
         </Modal>
     </>
   );
