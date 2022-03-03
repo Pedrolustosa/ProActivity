@@ -13,7 +13,15 @@ function App() {
   const [activity, setActivity] = useState({id: 0});
 
   const handleActivityModal = () => setShowActivityModal(!showActivityModal);
-  const handleConfirmModal = () => setSmShowConfirmModal(!smShowConfirmModal);
+  const handleConfirmModal = (id) => {
+    if(id !== 0 && id !== undefined){
+      const activity = activities.filter((activity) => activity.id === id);
+      setActivity(activity[0]);
+    } else {
+      setActivity({id: 0});
+    }
+    setSmShowConfirmModal(!smShowConfirmModal);
+  }
 
   const takeAllActivies = async () => {
     const response = await api.get('activity');
@@ -64,6 +72,7 @@ function App() {
   }
 
   const deleteActivity = async (id) =>  {
+    handleConfirmModal(0);
     if(await api.delete(`activity/${id}`))
     {
       const activityFilter = activities.filter((activity) => activity.id !== id);
@@ -94,7 +103,7 @@ function App() {
           handleConfirmModal={handleConfirmModal}
         />
 
-        <Modal show={showActivityModal} size="lg" onHide={handleActivityModal} centered>
+        <Modal show={showActivityModal} size="lg" onHide={handleActivityModal}>
           <Modal.Header closeButton>
             <Modal.Title>Atividade {activity.id !== 0 ? activity.id : ''}</Modal.Title>
           </Modal.Header>
@@ -109,7 +118,7 @@ function App() {
           </Modal.Body>
         </Modal>
 
-        <Modal size='sm' show={smShowConfirmModal} onHide={handleConfirmModal} centered>
+        <Modal size='sm' show={smShowConfirmModal} onHide={handleConfirmModal}>
           <Modal.Header closeButton>
             <Modal.Title>Excluindo Atividade{' '} {activity.id !== 0 ? activity.id : ''}</Modal.Title>
           </Modal.Header>
@@ -121,7 +130,7 @@ function App() {
               <i className='fas fa-check me-2'></i>
               sim
             </button>
-            <button className='btn btn-danger' onClick={() => handleConfirmModal}>
+            <button className='btn btn-danger' onClick={() => handleConfirmModal(0)}>
             <i className='fas fa-times me-2'></i>
               Não
             </button>

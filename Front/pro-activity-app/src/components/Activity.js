@@ -21,7 +21,7 @@ export default function Activity(props) {
           case 'High':
             return icon ? 'frown' : 'danger';
           default:
-            return 'Não Definido';
+            return icon ? 'grin-beam-sweat' : 'primary';
         }
       }
 
@@ -52,7 +52,7 @@ export default function Activity(props) {
                 <button className='btn btn-sm btn-outline-primary me-2' onClick={() => props.editActivity(props.act.id)}>
                     <i className='fas fa-pen me-2'></i>Editar
                 </button>
-                <button className='btn btn-sm btn-outline-danger' onClick={() => props.handleConfirmModal()}>
+                <button className='btn btn-sm btn-outline-danger' onClick={() => props.handleConfirmModal(props.act.id)}>
                     <i className='fas fa-trash me-2'></i>Deletar
                 </button>
             </div>
