@@ -1,7 +1,4 @@
-using ProActivity.API.Models;
-using Microsoft.EntityFrameworkCore;
-
-namespace ProActivity.API.Data
+namespace ProActivity.Data.Context
 {
     public class DataContext : DbContext
     {
