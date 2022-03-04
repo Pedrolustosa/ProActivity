@@ -47,14 +47,34 @@ namespace ProActivity.Domain.Services
             return await _activityRepo.SaveChangeAsync();
         }
 
-        public Task<Activity[]> TakeActivityByIdAsync()
+        public async Task<Activity> TakeActivityByIdAsync(int activityId)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var activity = await _activityRepo.TakeByIdAsync(activityId);
+                if (activity == null) return null;
+
+                return activity;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public Task<Activity> TakeAllActivityAsync(int activityId)
+        public async Task<Activity[]> TakeAllActivityAsync()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var activities = await _activityRepo.TakeAllAsync();
+                if (activities == null) return null;
+
+                return activities;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<Activity> UpdateActivity(Activity model)

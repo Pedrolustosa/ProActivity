@@ -9,7 +9,7 @@ namespace ProActivity.Domain.Interfaces.Services
         Task<Activity> UpdateActivity(Activity model);
         Task<bool> DeleteActivity(int id);
         Task<bool> ConcludeActivity(Activity model);
-        Task<Activity[]> TakeActivityByIdAsync();
-        Task<Activity> TakeAllActivityAsync(int activityId);
+        Task<Activity> TakeActivityByIdAsync(int activityId);
+        Task<Activity[]> TakeAllActivityAsync();
     }
 }
