@@ -3,10 +3,10 @@ using ProActivity.Domain.Entities;
 
 namespace ProActivity.Domain.Interfaces.Repositories
 {
-    public interface IActivityRepo
+    public interface IActivityRepo : IGeneralRepo
     {
-         Task<Activity[]> TakeAllAsync();
-         Task<Activity> TakeByIdAsync();
-         Task<Activity> TakeByTitleAsync();
+        Task<Activity[]> TakeAllAsync();
+        Task<Activity> TakeByIdAsync(int id);
+        Task<Activity> TakeByTitleAsync(string title);
     }
 }
