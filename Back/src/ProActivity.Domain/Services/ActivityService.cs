@@ -13,9 +13,15 @@ namespace ProActivity.Domain.Services
         {
             _activityRepo = activityRepo;
         }
-        public Task<bool> ConcludeActivity(Activity model)
+        public async Task<bool> ConcludeActivity(Activity model)
         {
-            throw new System.NotImplementedException();
+            if (model != null)
+            {
+                model.Conclusion();
+                _activityRepo.Update<Activity>(model);
+                return await _activityRepo.SaveChangeAsync();
+            }
+            return false;
         }
 
         public async Task<Activity> CreateActivity(Activity model)
@@ -29,13 +35,16 @@ namespace ProActivity.Domain.Services
                 if (await _activityRepo.SaveChangeAsync())
                     return model;
             }
-
             return null;
         }
 
-        public Task<bool> DeleteActivity(int id)
+        public async Task<bool> DeleteActivity(int activityId)
         {
-            throw new System.NotImplementedException();
+            var activity = await _activityRepo.TakeByIdAsync(activityId);
+            if (activity == null) throw new Exception("Atividade que tentou deletar não existe.");
+
+            _activityRepo.Delete(activity);
+            return await _activityRepo.SaveChangeAsync();
         }
 
         public Task<Activity[]> TakeActivityByIdAsync()
@@ -48,9 +57,18 @@ namespace ProActivity.Domain.Services
             throw new System.NotImplementedException();
         }
 
-        public Task<Activity> UpdateActivity(Activity model)
+        public async Task<Activity> UpdateActivity(Activity model)
         {
-            throw new System.NotImplementedException();
+            if (model.DateConclusion != null)
+                throw new Exception("Não pode alterar atvidade já concluida");
+
+            if (await _activityRepo.TakeByIdAsync(model.Id) == null)
+            {
+                _activityRepo.Update(model);
+                if (await _activityRepo.SaveChangeAsync())
+                    return model;
+            }
+            return null;
         }
     }
 }
