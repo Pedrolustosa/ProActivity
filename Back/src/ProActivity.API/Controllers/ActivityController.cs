@@ -52,37 +52,60 @@ namespace ProActivity.API.Controllers
         }
 
         [HttpPost]
-        public Activity Post(Activity activity)
+        public async Task<IActionResult> Post(Activity model)
         {
-            _context.Activities.Add(activity);
-            if (_context.SaveChanges() > 0)
-                return _context.Activities.FirstOrDefault(act => act.Id == activity.Id);
-            else
-                throw new Exception("Você não coseguiu adicionar uma atividade");
+            try
+            {
+                var activity = await _activityService.CreateActivity(model);
+                if (activity == null) return NoContent();
+
+                return Ok(activity);
+            }
+            catch (System.Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar recuperar dados. Erro: {ex.Message}");
+            }
         }
 
         [HttpPut("{id}")]
-        public Activity Put(int id, Activity activity)
+        public async Task<IActionResult> Put(int id, Activity model)
         {
-            if (activity.Id != id) throw new Exception("Você está tentando atualizar a atividade errada!");
+            try
+            {
+                if (model.Id != id) this.StatusCode(StatusCodes.Status409Conflict, $"Erro ao tentar recuperar dados.");
 
-            _context.Update(activity);
-            if (_context.SaveChanges() > 0)
-                return _context.Activities.FirstOrDefault(act => act.Id == id);
-            else
-                return new Activity();
+                var activity = await _activityService.UpdateActivity(model);
+                if (activity == null) return NoContent();
+
+                return Ok(activity);
+            }
+            catch (System.Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar recuperar dados. Erro: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]
-        public bool Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var activity = _context.Activities.FirstOrDefault(act => act.Id == id);
-            if (activity == null)
-                throw new Exception("Você está tentando deletar uma atividade que não existe");
+            try
+            {
+                var activity = await _activityService.TakeActivityByIdAsync(id);
+                if (activity == null) this.StatusCode(StatusCodes.Status409Conflict, $"Erro ao tentar excluir dados inexistente.");
 
-            _context.Remove(activity);
-
-            return _context.SaveChanges() > 0;
+                if (await _activityService.DeleteActivity(id))
+                {
+                    return Ok(new { message = "Deletado com Sucesso!" });
+                }
+                else
+                {
+                    return BadRequest("Ocorreu um problema específico na exclusão!");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar deletar dados. Id: {id}, Erro: {ex.Message}");
+            }
         }
 
     }
