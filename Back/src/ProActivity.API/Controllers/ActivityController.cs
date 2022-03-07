@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProActivity.Data.Context;
 using System.Collections.Generic;
 using ProActivity.Domain.Entities;
+using ProActivity.Domain.Interfaces.Services;
 
 namespace ProActivity.API.Controllers
 {
@@ -11,11 +12,10 @@ namespace ProActivity.API.Controllers
     [Route("api/[controller]")]
     public class ActivityController : ControllerBase
     {
-        private readonly DataContext _context;
-
-        public ActivityController(DataContext context)
+        private readonly IActivityService _activityService;
+        public ActivityController(IActivityService activityService)
         {
-            _context = context;
+            _activityService = activityService;
         }
 
         [HttpGet]

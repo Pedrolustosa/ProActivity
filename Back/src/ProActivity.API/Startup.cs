@@ -7,6 +7,10 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProActivity.Domain.Interfaces.Repositories;
+using ProActivity.Data.Repositories;
+using ProActivity.Domain.Interfaces.Services;
+using ProActivity.Domain.Services;
 
 namespace ProActivity.API
 {
@@ -23,6 +27,11 @@ namespace ProActivity.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(options => options.UseSqlite(Configuration.GetConnectionString("Default")));
+
+            services.AddScoped<IGeneralRepo, GeneralRepo>();
+            services.AddScoped<IActivityRepo, ActivityRepo>();
+            services.AddScoped<IActivityService, ActivityService>();
+
             services.AddControllers()
                     .AddJsonOptions(options =>
                     {
