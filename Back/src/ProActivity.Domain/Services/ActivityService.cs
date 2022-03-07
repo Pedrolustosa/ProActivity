@@ -38,6 +38,20 @@ namespace ProActivity.Domain.Services
             return null;
         }
 
+        public async Task<Activity> UpdateActivity(Activity model)
+        {
+            if (model.DateConclusion != null)
+                throw new Exception("Não pode alterar atvidade já concluida");
+
+            if (await _activityRepo.TakeByIdAsync(model.Id) != null)
+            {
+                _activityRepo.Update(model);
+                if (await _activityRepo.SaveChangeAsync())
+                    return model;
+            }
+            return null;
+        }
+
         public async Task<bool> DeleteActivity(int activityId)
         {
             var activity = await _activityRepo.TakeByIdAsync(activityId);
@@ -75,20 +89,6 @@ namespace ProActivity.Domain.Services
             {
                 throw new Exception(ex.Message);
             }
-        }
-
-        public async Task<Activity> UpdateActivity(Activity model)
-        {
-            if (model.DateConclusion != null)
-                throw new Exception("Não pode alterar atvidade já concluida");
-
-            if (await _activityRepo.TakeByIdAsync(model.Id) == null)
-            {
-                _activityRepo.Update(model);
-                if (await _activityRepo.SaveChangeAsync())
-                    return model;
-            }
-            return null;
         }
     }
 }

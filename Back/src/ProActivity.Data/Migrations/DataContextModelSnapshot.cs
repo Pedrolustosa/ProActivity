@@ -25,7 +25,7 @@ namespace ProActivity.Data.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DateConclusion")
+                    b.Property<DateTime?>("DateConclusion")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")

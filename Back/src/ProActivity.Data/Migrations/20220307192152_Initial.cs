@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProActivity.Data.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,7 @@ namespace ProActivity.Data.Migrations
                     Title = table.Column<string>(type: "varchar(100)", nullable: true),
                     Description = table.Column<string>(type: "varchar(255)", nullable: true),
                     CreationDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DateConclusion = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DateConclusion = table.Column<DateTime>(type: "TEXT", nullable: true),
                     Priority = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

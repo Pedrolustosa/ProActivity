@@ -9,10 +9,15 @@ namespace ProActivity.Domain.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime CreationDate { get; set; }
-        public DateTime DateConclusion { get; set; }
+        public DateTime? DateConclusion { get; set; }
         public Priority Priority { get; set; }
 
-        public Activity() => CreationDate = DateTime.Now;
+        public Activity()
+        {
+            CreationDate = DateTime.Now;
+            DateConclusion = null;
+        }
+
 
         public Activity(int id, string title, string description) : this()
         {
@@ -26,7 +31,7 @@ namespace ProActivity.Domain.Entities
             if (DateConclusion == null)
                 DateConclusion = DateTime.Now;
             else
-                throw new Exception($"Atividade concluida em: {DateConclusion.ToString("dd/MM/yyyy hh:mm")}");
+                throw new Exception($"Atividade concluida em: {DateConclusion?.ToString("dd/MM/yyyy hh:mm")}");
         }
     }
 }

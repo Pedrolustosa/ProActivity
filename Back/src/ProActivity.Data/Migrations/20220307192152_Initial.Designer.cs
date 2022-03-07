@@ -9,8 +9,8 @@ using ProActivity.Data.Context;
 namespace ProActivity.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220303195828_initial")]
-    partial class initial
+    [Migration("20220307192152_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,7 +27,7 @@ namespace ProActivity.Data.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DateConclusion")
+                    b.Property<DateTime?>("DateConclusion")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
