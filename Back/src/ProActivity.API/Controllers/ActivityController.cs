@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ProActivity.Data.Context;
 using System.Collections.Generic;
 using ProActivity.Domain.Entities;
 using ProActivity.Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace ProActivity.API.Controllers
 {
@@ -19,15 +20,35 @@ namespace ProActivity.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Activity> Get()
+        public async Task<IActionResult> Get()
         {
-            return _context.Activities;
+            try
+            {
+                var activities = await _activityService.TakeAllActivityAsync();
+                if (activities == null) return NoContent();
+
+                return Ok(activities);
+            }
+            catch (System.Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar recuperar dados. Erro: {ex.Message}");
+            }
         }
 
         [HttpGet("{id}")]
-        public Activity GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            return _context.Activities.FirstOrDefault(act => act.Id == id);
+            try
+            {
+                var activity = await _activityService.TakeActivityByIdAsync(id);
+                if (activity == null) return NoContent();
+
+                return Ok(activity);
+            }
+            catch (System.Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar recuperar dados. Id: {id}, Erro: {ex.Message}");
+            }
         }
 
         [HttpPost]
