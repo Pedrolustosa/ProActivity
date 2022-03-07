@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using ProActivity.Domain.Entities;
-using ProActivity.Domain.Interfaces.Repositories;
 using ProActivity.Domain.Interfaces.Services;
+using ProActivity.Domain.Interfaces.Repositories;
 
 namespace ProActivity.Domain.Services
 {
