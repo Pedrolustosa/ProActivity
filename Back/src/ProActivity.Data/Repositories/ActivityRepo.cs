@@ -20,7 +20,7 @@ namespace ProActivity.Data.Repositories
             IQueryable<Activity> query = _context.Activities;
 
             query = query.AsNoTracking()
-                         .OrderByDescending(activ => activ.Id);
+                         .OrderBy(activ => activ.Id);
 
             return await query.ToArrayAsync();
         }
@@ -30,7 +30,7 @@ namespace ProActivity.Data.Repositories
             IQueryable<Activity> query = _context.Activities;
 
             query = query.AsNoTracking()
-                         .OrderByDescending(activ => activ.Id)
+                         .OrderBy(activ => activ.Id)
                          .Where(a => a.Id == id);
 
             return await query.FirstOrDefaultAsync();
@@ -41,7 +41,7 @@ namespace ProActivity.Data.Repositories
             IQueryable<Activity> query = _context.Activities;
 
             query = query.AsNoTracking()
-                         .OrderByDescending(activ => activ.Id);
+                         .OrderBy(activ => activ.Id);
 
             return await query.FirstOrDefaultAsync(a => a.Title == title);
         }

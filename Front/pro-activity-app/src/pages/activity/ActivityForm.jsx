@@ -31,7 +31,7 @@ export default function ActivityForm(props) {
         else
             props.addActivity(activity);
 
-        setActivity(activityBegin );
+        setActivity(activityBegin);
     };
 
     const inputTextHandler = (e) => {

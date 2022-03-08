@@ -1,9 +1,9 @@
 import './App.css';
-import api from './api/atividade';
+import api from './api/activity';
 import { useState, useEffect } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import ActivityForm from './components/ActivityForm';
-import ActivitiesList from './components/ActivitiesList';
+import ActivityForm from './pages/activity/ActivityForm';
+import ActivitiesList from './pages/activity/ActivitiesList';
 
 function App() {
   const [showActivityModal, setShowActivityModal] = useState(false);
@@ -65,9 +65,14 @@ function App() {
     handleActivityModal();
   }
 
-  const updateActivity = (act) => {
+  const updateActivity = async (act) => {
     handleActivityModal();
-    setActivities(activities.map(item => item.id === act.id ? act : item));
+    const response = await api.put(`activity/${act.id}`, act);
+    const { id } = response.data;
+
+    setActivities(
+      activities.map((item) => (item.id === id ? response.data : item))
+    );
     setActivity({id: 0});
   }
 
