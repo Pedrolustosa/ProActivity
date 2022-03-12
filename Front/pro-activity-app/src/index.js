@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootswatch/dist/lumen/bootstrap.min.css';
 import Menu from './components/Menu';
 
 ReactDOM.render(

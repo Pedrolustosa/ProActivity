@@ -2,7 +2,7 @@ import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 
 export default function Menu() {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="dark" expand="lg" variant='dark'>
             <Container>
                 <Navbar.Brand href="#home">ProActivity</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

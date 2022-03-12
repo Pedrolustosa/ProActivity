@@ -97,7 +97,7 @@ function App() {
         <div className='d-flex justify-content-between align-items-end mt-2 mb-3 pb-2 border-bottom border-1'>
           <h1 className='m-0 p-0'>Atividade {activity.id !== 0 ? activity.id : ''}</h1>
 
-          <Button variant="outline-secondary" onClick={newActivity}>
+          <Button variant="outline-warning" onClick={newActivity}>
             <i className='fas fa-plus'></i>
           </Button>
         </div>
