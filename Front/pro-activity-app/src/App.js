@@ -1,14 +1,14 @@
 import './App.css';
 import Activity from "./pages/activity/Activity";
-import { Link, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 
 export default function App() {
   return (
-    <>
-      <Route path='/home' component={Home}/>
+    <Switch>
+      <Route path='/' exact component={Home}/>
       <Route path='/client' component={Client}/>
       <Route path='/activity' component={Activity}/>
-    </>
+    </Switch>
 );
 }
 
