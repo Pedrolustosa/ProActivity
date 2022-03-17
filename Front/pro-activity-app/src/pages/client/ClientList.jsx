@@ -8,28 +8,28 @@ const clients = [
         name: 'Microsoft',
         responsable: 'Pedro 0',
         contate: '81999999999',
-        situation: 'Active'
+        situation: 'Ativo'
     },
     {
         id: 2,
         name: 'Apple',
         responsable: 'Pedro 1',
         contate: '81999999999',
-        situation: 'Inactive'
+        situation: 'Inativo'
     },
     {
         id: 3,
         name: 'Amazon',
         responsable: 'Pedro 2',
         contate: '81999999999',
-        situation: 'Inactive'
+        situation: 'Em Analise'
     },
     {
         id: 4,
         name: 'Google',
         responsable: 'Pedro 3',
         contate: '81999999999',
-        situation: 'Active'
+        situation: 'Ativo'
     }
 ]
 
@@ -42,7 +42,8 @@ export default function ClientList() {
 
     const clientsFilter = clients.filter((client) => {
         return (
-            client.name.toLocaleLowerCase().indexOf(termSearch) !== -1
+            //client.name.toLocaleLowerCase().indexOf(termSearch) !== -1
+            Object.values(client).join(' ').toLowerCase().includes(termSearch.toLowerCase())
         )
     });
 
