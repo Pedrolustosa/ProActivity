@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import { FormControl, InputGroup } from 'react-bootstrap';
 import TitlePage from '../../components/TitlePage';
 
@@ -34,6 +34,18 @@ const clients = [
 ]
 
 export default function ClientList() {
+    const [termSearch, setTermSearch] = useState('');
+
+    const handleInputChange = (e) => {
+        setTermSearch(e.target.value);
+    };
+
+    const clientsFilter = clients.filter((client) => {
+        return (
+            client.name.toLocaleLowerCase().indexOf(termSearch) !== -1
+        )
+    });
+
     return (
         <>
 
@@ -41,6 +53,7 @@ export default function ClientList() {
             <InputGroup className="mt-2 mb-3">
                 <InputGroup.Text>Buscar: </InputGroup.Text>
                 <FormControl
+                    onChange={handleInputChange}
                     aria-label="Default"
                     aria-describedby="inputGroup-sizing-default"
                 />
@@ -57,7 +70,7 @@ export default function ClientList() {
                     </tr>
                 </thead>
                 <tbody>
-                    {clients.map((client) => (
+                    {clientsFilter.map((client) => (
                         <tr key={client.id}>
                             <td>{client.id}</td>
                             <td>{client.name}</td>
