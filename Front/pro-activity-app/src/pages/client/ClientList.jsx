@@ -57,7 +57,7 @@ export default function ClientList() {
         <>
 
             <TitlePage title='Cliente Lista' >
-                <Button variant='outline-primary' onClick={newClient}>
+                <Button variant='outline-success' onClick={newClient}>
                     <i className='fa fa-user-plus me-2'></i>
                     Novo Cliente
                 </Button>

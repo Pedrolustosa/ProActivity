@@ -12,6 +12,7 @@ export default function App() {
       <Route path='/activity/list' component={Activity}/>
       <Route path='/client/list' component={Client}/>
       <Route path='/client/detail' component={ClientForm}/>
+      <Route path='/client/detail/:id' component={ClientForm}/>
     </Switch>
   );
 }
