@@ -52,6 +52,8 @@ Que queiram migrar um projeto em .NET Webforms, Razor MVC ou Web API 2.
 Que queiram entender como rodar .NET Core sobre Mac, Windows ou Linux.
 Que queiram entender como desenvolver sistemas em camadas com .NET Core com VS Code.
 Que queiram aprender a trabalhar com REACT integrado à uma We Application .NET Core
+
+API - https://proactivity.azurewebsites.net/swagger/index.html
 </details>
 
 <details>
@@ -85,4 +87,6 @@ Conhecimento básico em C#
 Conhecimento básico de banco de dados
 Conhecimento em POO
 Computador Windows, Linux ou Mac
+
+API - https://proactivity.azurewebsites.net/swagger/index.html
 </details>

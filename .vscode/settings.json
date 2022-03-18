@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/a39f9052-ddec-4171-be4d-ea1753d33f45/resourceGroups/DevJobs/providers/Microsoft.Web/sites/ProActivity",
+    "appService.deploySubpath": "Back\\src\\ProActivity.API\\publish"
+}
